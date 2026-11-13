@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mahika Valley Stay – Share your stay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Mulish:wght@400;600;700&family=Mukta:wght@400;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+:root{--hero1:#0c2622;--hero2:#1b4a3e;--brass:#c9a45c;--brass2:#e3c88a;--sheet:#fbf8f1;--ink:#1d2a26;--mute:#66726c;--line:#e6dfcd;--chip:#fff;--field:#f3eee1;--accent:#17493d;--onacc:#fbf8f1;--star-off:#d9d2bd;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--sheet:#13201d;--ink:#eee8d8;--mute:#9fb0a8;--line:#2b3d37;--chip:#182824;--field:#0f1b18;--accent:#c9a45c;--onacc:#0c2622;--star-off:#34463f}}
+:root[data-theme="dark"]{color-scheme:dark;--sheet:#13201d;--ink:#eee8d8;--mute:#9fb0a8;--line:#2b3d37;--chip:#182824;--field:#0f1b18;--accent:#c9a45c;--onacc:#0c2622;--star-off:#34463f}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--hero1)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--hero1);color:var(--ink);font-family:"Mulish","Mukta",system-ui,sans-serif;line-height:1.55}
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--hero1),var(--hero2));color:#f4ecd6;padding:26px 22px 78px;min-height:250px}
+.hero svg.leaf{position:absolute;right:-30px;bottom:-40px;width:300px;height:300px;opacity:.5;pointer-events:none}
+.lang{position:relative;display:flex;gap:6px;justify-content:flex-end;margin-bottom:26px}
+.lang button{background:transparent;border:1px solid rgba(227,200,138,.45);color:#f4ecd6;border-radius:999px;padding:5px 14px;font:600 .8rem "Mulish","Mukta",sans-serif;cursor:pointer}
+.lang button.on{background:var(--brass);border-color:var(--brass);color:#0c2622}
+.hero h1{position:relative;font-family:"Cormorant Garamond","Tiro Devanagari Hindi",Georgia,serif;font-weight:600;font-size:2.7rem;line-height:1.02;margin:0;letter-spacing:.2px}
+.hero .tag{position:relative;margin:10px 0 0;color:var(--brass2);font-size:.98rem;max-width:22em}
+.sheet{position:relative;margin-top:-34px;background:var(--sheet);border-radius:28px 28px 0 0;padding:26px 20px 44px;max-width:640px;margin-left:auto;margin-right:auto;min-height:60vh}
+@media(min-width:640px){.hero{padding-left:max(22px,calc((100% - 600px)/2));padding-right:max(22px,calc((100% - 600px)/2))}}
+.lead{margin:0 0 6px;color:var(--mute);font-size:1rem}
+.sec{padding:20px 0;border-top:1px solid var(--line)}
+.sec:first-of-type{border-top:0}
+h2{font-family:"Cormorant Garamond","Tiro Devanagari Hindi",Georgia,serif;font-weight:700;font-size:1.35rem;margin:0 0 12px;color:var(--ink)}
+.stars{display:flex;gap:4px}
+.stars button{background:none;border:0;padding:2px 4px;font-size:2.4rem;line-height:1;color:var(--star-off);cursor:pointer;transition:transform .15s,color .15s}
+.stars button.on{color:var(--brass)}
+.stars button:active{transform:scale(1.25)}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:10px 17px;font:600 .93rem "Mulish","Mukta",sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--onacc)}
+textarea{width:100%;min-height:72px;border:1px solid var(--line);border-radius:14px;background:var(--field);color:var(--ink);font:inherit;padding:12px 14px;resize:vertical}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.btn{display:block;width:100%;border:0;border-radius:14px;background:var(--accent);color:var(--onacc);font:700 1rem "Mulish","Mukta",sans-serif;padding:15px;cursor:pointer;text-align:center;text-decoration:none;letter-spacing:.2px}
+.btn.alt{background:transparent;color:var(--accent);border:1.5px solid var(--accent);margin-top:10px}
+#gen{margin-top:8px;background:linear-gradient(135deg,#c9a45c,#e3c88a);color:#0c2622}
+.draft{position:relative;border:1.5px solid var(--line);border-radius:16px;padding:14px 14px 10px 44px;margin-bottom:12px;background:var(--chip)}
+.draft::before{content:"";position:absolute;left:14px;top:17px;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--mute)}
+.draft.sel{border-color:var(--brass);box-shadow:0 0 0 1px var(--brass)}
+.draft.sel::before{border-color:var(--brass);background:radial-gradient(var(--brass) 45%,transparent 50%)}
+.draft textarea{border:0;background:transparent;min-height:96px;padding:0;font-size:.97rem}
+.draft .btn{padding:9px;font-size:.88rem;margin-top:4px}
+.note{font-size:.84rem;color:var(--mute);margin:12px 0 0}
+.note a{color:var(--accent);font-weight:600}
+#steps{color:var(--ink);font-size:.92rem}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+<svg class="leaf" viewBox="0 0 300 300" fill="none" stroke="#c9a45c" stroke-width="1.2" aria-hidden="true">
+<g transform="translate(300 300)">
+<g id="lf"><path d="M0 0C-20 -70 -10 -150 0 -250C10 -150 20 -70 0 0Z"/><path d="M0 -20V-210" opacity=".6"/></g>
+<use href="#lf" transform="rotate(-18)"/><use href="#lf" transform="rotate(-36)"/><use href="#lf" transform="rotate(-54)"/><use href="#lf" transform="rotate(-72)"/><use href="#lf" transform="rotate(-90)"/>
+</g></svg>
+<div class="lang"><button id="lhi" class="on">हिंदी</button><button id="len">English</button></div>
+<h1>Mahika Valley Stay</h1>
+<p class="tag">A Bali-inspired retreat in Jaipur</p>
+</header>
+<main class="sheet">
+<p class="lead" id="sub"></p>
+<div class="sec"><h2 id="t1"></h2><div class="stars" id="stars"></div></div>
+<div class="sec"><h2 id="t2"></h2><div class="chips" id="chips"></div></div>
+<div class="sec"><h2 id="t3"></h2><textarea id="extra"></textarea></div>
+<button class="btn" id="gen"></button>
+
+<div id="out" class="hide" style="margin-top:26px">
+  <div class="sec"><h2 id="t4"></h2><div id="drafts"></div>
+  <button class="btn" id="copy"></button>
+  <a class="btn alt" id="post"></a>
+  <p class="note" id="steps"></p>
+  <p class="note"><a id="maps"></a></p>
+  <button class="btn alt" id="more"></button>
+  <p class="note" id="note"></p></div>
+</div>
+</main>
+<script>
+// >>> Owner: apni Google Place ID yahan daalein (Google Business Profile > "Get more reviews" link ka URL bhi chalega)
+var REVIEW_URL="https://search.google.com/local/writereview?placeid=ChIJBTUzwjFJbDkRVkGQat1W5vo";
+var MAPS_URL="https://www.google.com/maps/place/?q=place_id:ChIJBTUzwjFJbDkRVkGQat1W5vo";
+
+var UI={
+hi:{sub:"आपका अनुभव हमारे लिए बहुत मायने रखता है। नीचे चुनिए, हम आपके लिए रिव्यू का ड्राफ़्ट बना देंगे।",t1:"आपकी रेटिंग",t2:"आपको क्या पसंद आया?",t3:"कुछ और कहना चाहें? (वैकल्पिक)",ph:"जैसे: आपका पसंदीदा पल या सुझाव",gen:"रिव्यू ड्राफ़्ट बनाइए",t4:"अपना पसंदीदा ड्राफ़्ट चुनिए (चाहें तो बदल भी सकते हैं)",use:"यह चुनें",copy:"1. यह ड्राफ़्ट कॉपी करें",maps:"रिव्यू बॉक्स न खुले तो हमारा Google पेज खोलें",done:"✓ कॉपी हो गया",post:"2. Google पर रिव्यू खोलें",steps:"Google खुलने पर रिव्यू वाले बॉक्स में दबाकर रखें, 'Paste' चुनें और Submit करें। (Google ख़ुद टेक्स्ट नहीं भर सकता, इसलिए पेस्ट करना ज़रूरी है।)",more:"और ड्राफ़्ट दिखाइए",note:"रिव्यू आपके अपने Google अकाउंट से आपको ही सबमिट करना होगा। ड्राफ़्ट सिर्फ़ मदद के लिए है, इसे अपने शब्दों में बदलने के लिए स्वतंत्र महसूस करें।",pick:"पहले एक ड्राफ़्ट चुनिए।"},
+en:{sub:"Your experience means a lot to us. Pick below and we’ll draft a review for you.",t1:"Your rating",t2:"What did you enjoy?",t3:"Anything else to add? (optional)",ph:"e.g. your favourite moment or a suggestion",gen:"Create review drafts",t4:"Choose a draft you like (feel free to edit it)",use:"Use this one",copy:"1. Copy this draft",maps:"If the review box doesn’t open, open our Google page",done:"✓ Copied",post:"2. Open Google review",steps:"When Google opens, long-press inside the review box, choose Paste, then Submit. (Google doesn’t allow text to be pre-filled, so pasting is needed.)",more:"Show more drafts",note:"You’ll submit the review yourself from your own Google account. The drafts are only a starting point, so please edit them in your own words.",pick:"Please choose a draft first."}
+};
+var CH=[
+{id:"theme",l:{hi:"बाली थीम डिज़ाइन",en:"Bali-themed design"},p:{hi:["रिज़ॉर्ट का बाली थीम डिज़ाइन बहुत ख़ूबसूरत है","बाली थीम पर बना यह रिज़ॉर्ट देखने में बेहद सुंदर है","यहाँ का बाली-स्टाइल डिज़ाइन सच में अलग और आकर्षक है"],en:["The Bali-themed design of the resort is beautiful","This Bali-style resort looks absolutely stunning","The Bali theme gives the place a unique and charming feel"]}},
+{id:"food",l:{hi:"खाना",en:"Food"},p:{hi:["खाना बहुत स्वादिष्ट था","खाने का स्वाद लाजवाब रहा","यहाँ का खाना ताज़ा और बहुत अच्छा था"],en:["the food was delicious","the food was fresh and tasted great","we really enjoyed the meals here"]}},
+{id:"garden",l:{hi:"बड़ा गार्डन",en:"Big garden"},p:{hi:["गार्डन एरिया बहुत बड़ा और सुकून भरा है","बड़े गार्डन में समय बिताना बहुत अच्छा लगा","खुला और हरा-भरा गार्डन इसकी ख़ास पहचान है"],en:["the garden area is huge and peaceful","spending time in the big garden was a joy","the spacious green garden is a real highlight"]}},
+{id:"staff",l:{hi:"स्टाफ़",en:"Staff"},p:{hi:["स्टाफ़ बहुत मिलनसार और मददगार था","स्टाफ़ का व्यवहार बहुत अच्छा रहा","पूरा स्टाफ़ विनम्र और हर समय मदद के लिए तैयार था"],en:["the staff were friendly and helpful","the staff behaved very warmly and politely","the team was courteous and always ready to help"]}},
+{id:"service",l:{hi:"सर्विस",en:"Service"},p:{hi:["सर्विस बहुत बढ़िया थी","सेवा तेज़ और भरोसेमंद रही","हर चीज़ में सर्विस शानदार थी"],en:["the service was excellent","service was prompt and reliable","service was great in every way"]}},
+{id:"rooms",l:{hi:"साफ़ कमरे",en:"Clean rooms"},p:{hi:["कमरे बहुत साफ़-सुथरे थे","कमरों की सफ़ाई देखकर मन ख़ुश हो गया","कमरे आरामदायक और एकदम साफ़ थे"],en:["the rooms were spotlessly clean","the rooms were clean and comfortable","we loved how neat and tidy the rooms were"]}}
+];
+var INTRO={
+hi:{5:["हमारा अनुभव शानदार रहा!","माहिका वैली स्टे में रुकना बहुत यादगार रहा।","परिवार/दोस्तों के साथ यहाँ बहुत अच्छा समय बीता।"],4:["कुल मिलाकर बहुत अच्छा अनुभव रहा।","माहिका वैली स्टे में अच्छा समय बीता।","यहाँ रुकना अच्छा लगा।"],3:["यहाँ का अनुभव ठीक-ठाक रहा।","कुछ बातें अच्छी लगीं।","माहिका वैली स्टे में मिला-जुला अनुभव रहा।"]},
+en:{5:["We had a wonderful stay!","Staying at Mahika Valley Stay was truly memorable.","We had a lovely time here.","What a great experience!"],4:["Overall a really good experience.","We had a nice stay at Mahika Valley Stay.","A pleasant stay overall."],3:["Our experience was decent.","There were some things we liked.","A mixed but fair experience at Mahika Valley Stay."]}};
+var OUTRO={
+hi:{hi:["जयपुर आएँ तो ज़रूर यहाँ रुकें।","हम दोबारा ज़रूर आएँगे!","सभी को सलाह दूँगा/दूँगी।"],lo:["उम्मीद है आगे और बेहतर होगा।","सुधार की गुंजाइश है, पर कोशिश अच्छी है।"]},
+en:{hi:["Highly recommended if you’re visiting Jaipur.","We would love to come back!","Would happily recommend it to friends and family.","Thank you to the whole team."],lo:["Hope things get even better.","There’s room to improve, but the effort shows."]}};
+
+var lang="hi",stars=0,sel={},offset=0,chosen=-1;
+var $=function(i){return document.getElementById(i)};
+function pick(a,i){return a[i%a.length]}
+function build(i){
+  var ids=Object.keys(sel).filter(function(k){return sel[k]});
+  var tier=stars>=5?5:(stars===4?4:3);
+  var parts=[pick(INTRO[lang][tier],i+offset)];
+  var ch=CH.filter(function(c){return sel[c.id]});
+  // rotate order so each draft reads differently
+  var r=ch.slice(i%Math.max(ch.length,1)).concat(ch.slice(0,i%Math.max(ch.length,1)));
+  r.forEach(function(c,n){
+    var s=pick(c.p[lang],i+offset+n);
+    if(lang==="en"&&c.id!=="theme"){ s=(n===0?"The ":"")===""?s:s; }
+    parts.push(lang==="en"?(c.id==="theme"?s+".":cap(s)+"."):s+"।");
+  });
+  var x=$("extra").value.trim();
+  if(x)parts.push(/[.!?।]$/.test(x)?x:x+(lang==="hi"?"।":"."));
+  parts.push(pick(OUTRO[lang][stars>=4?"hi":"lo"],i+offset));
+  return parts.join(" ");
+}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function render(){
+  var u=UI[lang];
+  $("sub").textContent=u.sub;$("t1").textContent=u.t1;$("t2").textContent=u.t2;$("t3").textContent=u.t3;
+  $("extra").placeholder=u.ph;$("gen").textContent=u.gen;$("t4").textContent=u.t4;
+  $("copy").textContent=u.copy;$("post").textContent=u.post;$("steps").textContent=u.steps;$("post").href=REVIEW_URL;$("maps").href=MAPS_URL;$("maps").textContent=u.maps;$("more").textContent=u.more;$("note").textContent=u.note;
+  $("lhi").className=lang==="hi"?"on":"";$("len").className=lang==="en"?"on":"";
+  $("chips").innerHTML="";
+  CH.forEach(function(c){var b=document.createElement("button");b.className="chip"+(sel[c.id]?" on":"");b.textContent=c.l[lang];b.onclick=function(){sel[c.id]=!sel[c.id];b.className="chip"+(sel[c.id]?" on":"")};$("chips").appendChild(b)});
+}
+function renderStars(){
+  $("stars").innerHTML="";
+  for(var i=1;i<=5;i++)(function(i){var b=document.createElement("button");b.textContent="★";b.className=i<=stars?"on":"";b.setAttribute("aria-label",i+" star");b.onclick=function(){stars=i;renderStars()};$("stars").appendChild(b)})(i);
+}
+function drafts(){
+  var d=$("drafts");d.innerHTML="";chosen=-1;
+  for(var i=0;i<3;i++)(function(i){
+    var box=document.createElement("div");box.className="draft";
+    var ta=document.createElement("textarea");ta.value=build(i);
+    var b=document.createElement("button");b.className="btn alt";b.textContent=UI[lang].use;
+    b.onclick=function(){chosen=i;[].forEach.call(d.children,function(x,n){x.className="draft"+(n===i?" sel":"")})};
+    box.appendChild(ta);box.appendChild(b);d.appendChild(box);
+  })(i);
+  chosen=0;d.children[0].className="draft sel";$("copy").textContent=UI[lang].copy;
+}
+$("lhi").onclick=function(){lang="hi";render();if(!$("out").classList.contains("hide"))drafts()};
+$("len").onclick=function(){lang="en";render();if(!$("out").classList.contains("hide"))drafts()};
+$("gen").onclick=function(){if(!stars){stars=5;renderStars()}offset=0;$("out").classList.remove("hide");drafts();$("out").scrollIntoView({behavior:"smooth"})};
+$("more").onclick=function(){offset+=1;drafts()};
+$("copy").onclick=function(){
+  var ds=$("drafts").children;
+  if(chosen<0)chosen=0;
+  var ta=ds[chosen].querySelector("textarea");
+  var ok=function(){$("copy").textContent=UI[lang].done};
+  var fb=function(){try{ta.focus();ta.select();ta.setSelectionRange(0,99999);document.execCommand("copy");}catch(e){}ok()};
+  try{navigator.clipboard.writeText(ta.value).then(ok,fb)}catch(err){fb()}
+};
+render();renderStars();
+</script>
+</body>
+</html>
